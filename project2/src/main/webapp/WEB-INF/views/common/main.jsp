@@ -81,9 +81,9 @@
                                 <!-- 아이디, 비밀번호, 로그인 버튼 -->
                                 <fieldset id="id-pw-area">
                                     <section>
-                                        <input type="text" name="inputEmail" placeholder="아이디" autocomplete="off" value="${cookie.saveId.value}">
+                                        <input type="text" name="memberEmail" placeholder="아이디" autocomplete="off" value="${cookie.saveId.value}">
                                                                                             <!-- 자동완성 끄기  -->    <%-- 쿠기중 saveId에 저장된 값 --%>
-                                        <input type="password" name="inputPw" placeholder="비밀번호">
+                                        <input type="password" name="memberPw" placeholder="비밀번호">
                                     </section>
                                     <section>
                                         <!-- type 미기재시 type="submit"이 기본값 -->
