@@ -23,4 +23,13 @@ public class MemberDAO {
 		return sqlSession.selectOne("memberMapper.login",memberEmail);
 	}
 	
+
+	/**
+	 * @param inputMember
+	 * @return
+	 */
+	public int signUp(Member inputMember) {
+		return sqlSession.insert("memberMapper.signUp", inputMember);
+//		return 0; 테스트용
+	}
 }

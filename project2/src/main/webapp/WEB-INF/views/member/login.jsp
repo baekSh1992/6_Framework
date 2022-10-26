@@ -29,12 +29,12 @@
         <form action="/member/login" method="post">
             <section class="input-box">
                 <!-- required(뜻:필수) 속성 : form태그 제출 시 해당 input 태그에 값이 존재하는지 검사 -->
-                <input type="text" name="inputEmail" placeholder="Email" required value="${cookie.saveId.value}">
+                <input type="text" name="memberEmail" placeholder="Email" required value="${cookie.saveId.value}">
             </section>
 
             <section class="input-box">
                 <!-- required(뜻:필수) 속성 : 미입력시 제출 안되고, 입력칸 작성 요청 메세지 뜸 -->
-                <input type="password" name="inputPw" placeholder="Password" required>
+                <input type="password" name="memberPw" placeholder="Password" required>
             </section>
 
             <button class="login-btn">Login</button>
@@ -65,13 +65,13 @@
     </main>
 
             <%--
-                session scope에 message 속성이 존재하는 경우
+                 message 속성이 존재하는 경우
                 alert창을 이용해서 내용을 출력     
             --%>
 
-            <c:if test="${not empty sessionScope.message}">
+            <c:if test="${not empty message}">
                 <script>
-                    alert("${sessionScope.message}")
+                    alert("${message}")
                 </script>
 
             <%-- footer에 쓰는이유 
@@ -79,8 +79,8 @@
                 2) header에 넣을경우 alert를 실행할때 뒤쪽에 로딩이 걸림
             --%>
 
-                <%-- 로그인정보 오류 message 1회 출력 후 session scope에서 삭제 (안하면 맞게 입력해도 또 나옴)--%>
-                <c:remove var="message" scope="session" />
+                <%-- 로그인정보 오류 message 1회 출력 후 모든 scope 삭제 (안하면 맞게 입력해도 또 나옴)--%>
+                <c:remove var="message"/>
                 
             </c:if>
 
