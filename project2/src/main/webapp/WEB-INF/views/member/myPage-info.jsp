@@ -88,5 +88,7 @@
 
     <!-- 다음 주소 api 추가 하는 자리 -->
 
+    <!-- myPage.js external방식으로 추가 -->
+    <script src="/resources/js/member/myPage.js"></script>
 </body>
 </html>
