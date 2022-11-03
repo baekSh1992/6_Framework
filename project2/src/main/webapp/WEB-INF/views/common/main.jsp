@@ -76,8 +76,16 @@
                         <c:when test="${empty sessionScope.loginMember}">
 
                                         <%-- 절대 경로 --%>
-                            <form action="/member/login" name="login-frm" method="POST">
+                            <form action="/member/login" name="login-frm" method="POST" 
+                                onsubmit="return loginValidate();"> <%-- 밸리데이트 = 유효하다 = 유효한지 검사 --%>
                     
+                            <%-- 
+                                form태그의 submit 이벤트를 취소시키는 방법1
+
+                                -> 인라인 이벤트 모델의 결과로 false를 리턴하면
+                                    제출 이벤트 취소된다.
+                             --%>
+
                                 <!-- 아이디, 비밀번호, 로그인 버튼 -->
                                 <fieldset id="id-pw-area">
                                     <section>
@@ -103,7 +111,7 @@
 
                                 <!-- label 태그 내부에 input태그를 작성하면 for=""를 안써도 자동 연결됨 -->
                                 <label>
-                                    <input type="checkbox" name="saveId" ${temp}> 아이디 저장
+                                    <input type="checkbox" id="saveId" name="saveId" ${temp}> 아이디 저장
                                 </label>
                     
                     
@@ -151,6 +159,8 @@
 
         <%-- footer.jsp 포함 --%>
         <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+        <script src="/resources/js/main.js"></script>
 
 </body>
 </html>
