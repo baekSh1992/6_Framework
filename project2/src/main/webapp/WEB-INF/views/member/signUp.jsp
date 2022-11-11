@@ -188,5 +188,14 @@
     }
 </script>
 
+    <%-- jQuery 라이브러리(.js 파일) 추가(CDN 방식 콘텐트 딜리버리 네트워크) --%>
+    <script
+        src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+        crossorigin="anonymous">
+    </script>
+
+    <script src="/resources/js/member/signUp.js"></script>
+
 </body>
 </html>
