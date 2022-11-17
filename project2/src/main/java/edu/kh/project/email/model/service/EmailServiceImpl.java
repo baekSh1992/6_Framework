@@ -11,14 +11,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class EmailServiceImpl implements EmailService {
 
-    @Autowired // 의존성 주입
+    @Autowired
     private JavaMailSender mailSender; // email-context.xml에서 생성한 bean
     
-    private String fromEmail = "baekendmaster@gmail.com";
-    private String fromUsername = "이메일테스트계정";
+    private String fromEmail = "baekdh12345@gmail.com";
+    private String fromUsername = "수업용테스트계정";
 
     @Override
-    public String createAuthKey() { // Auth ==  인증
+    public String createAuthKey() {
         String key = "";
         for(int i=0 ; i< 6 ; i++) {
             
@@ -74,7 +74,7 @@ public class EmailServiceImpl implements EmailService {
             mail.setFrom(new InternetAddress(fromEmail, fromUsername));
             
             // 수신자(받는사람) 지정
-            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(email)); // 여러명한테 보내느냐
+            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
             
             
             // 이메일 제목 세팅
@@ -91,10 +91,5 @@ public class EmailServiceImpl implements EmailService {
 
         return authKey;
     }
-    
-    
-    
-    
-    
     
 }
