@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.kh.project.board.model.service.BoardService;
+import edu.kh.project.board.model.vo.Board;
 
 @Controller // 여기가 컨트롤러라고 명시하고 bean으로 등록하는 어노테이션
 public class BoardController {
@@ -49,5 +50,44 @@ public class BoardController {
 		return "board/boardList"; // forward
 //		          접두사 제거
 	}
+	
+	
+	// 게시글 상세 조회
+	@GetMapping("/board/{boardCode}/{boardNo}")
+	public String boardDetail(
+			@PathVariable("boardNo") int boardNo,
+			@PathVariable("boardCode") int boardCode,
+			Model model) {
+		
+		// 게시글 상세 조회 서비스 호출
+		Board board = service.selectBoardDetail(boardNo);
+		// + 좋아요 수, 좋아요 여부
+		// + 조회 수 증가(쿠키를 이용해서 해당 IP당 하루 한 번)
+		
+		model.addAttribute("board", board);
+		
+		return "board/boardDetail";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

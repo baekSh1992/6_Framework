@@ -50,5 +50,14 @@ public class BoardDAO {
 		return sqlSession.selectList("boardMapper.selectBoardList", boardCode, rowBounds);
 									// namespace.id				  , 파라미터 , RowBounds 객체
 		//														    파라미터가 없을 경우 빈칸 대신 null 대입
+	}
+
+	
+	/** // 게시글 상세 조회 + 이미지 목록 조회 + 댓글 목록 조회
+	 * @param boardNo
+	 * @return
+	 */
+	public Board selectBoardDetail(int boardNo) {
+		return sqlSession.selectOne("boardMapper.selectBoardDetail", boardNo);
 	}		
 }
