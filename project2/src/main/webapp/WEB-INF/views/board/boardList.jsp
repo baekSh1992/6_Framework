@@ -6,6 +6,7 @@
 <c:set var="pagination" value="${map.pagination}"/>
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,6 +45,7 @@
                     </thead>
 
                     <tbody>
+
                         <c:choose>
                             <c:when test="${empty boardList}">
                                 <!-- 게시글 목록 조회 결과가 비어있다면 -->
@@ -55,18 +57,19 @@
                             <c:otherwise>
                                 <c:forEach var="board" items="${boardList}">
                                     <tr>
-                                        <td>${board.boardNo}</td>
-                                        <td>
+                                        <td>${board.boardNo}</td>   
+                                        <td> 
 
                                             <%-- 썸네일이 있을 경우에만 출력 --%>
                                             <c:if test="${not empty board.thumbnail}">
                                                 <img class="list-thumbnail" src="${board.thumbnail}">
                                             </c:if>
 
-                                            <%-- /board/1/1500 
-                                                /board/{boardCode}/{boardNo}
+                                            
+                                            <%-- /board/1/1500?cp=1 
+                                                /board/{boardCode}/{boardNo}?cp=${pagination.currentPage}
                                             --%>
-                                            <a href="/board/${boardCode}/${board.boardNo}">${board.boardTitle}</a>   
+                                            <a href="/board/${boardCode}/${board.boardNo}?cp=${pagination.currentPage}">${board.boardTitle}</a>   
                                             [${board.commentCount}]                        
                                         </td>
                                         <td>${board.memberNickname}</td>
@@ -74,12 +77,9 @@
                                         <td>${board.readCount}</td>
                                         <td>${board.likeCount}</td>
                                     </tr>
-                                </c:forEach>
+                                </c:forEach>                                                        
                             </c:otherwise>
-
                         </c:choose>
-
-
 
                     </tbody>
                 </table>
@@ -96,16 +96,16 @@
 
             <div class="pagination-area">
 
-
                 <ul class="pagination">
                 
+                    
                     <!-- 첫 페이지로 이동 -->
                     <li><a href="/board/${boardCode}">&lt;&lt;</a></li>
 
                     <!-- 이전 목록 마지막 번호로 이동 -->
                     <li><a href="/board/${boardCode}?cp=${pagination.prevPage}">&lt;</a></li>
 
-                    <c:forEach var="i" begin="${pagination.startPage}"
+                    <c:forEach var="i" begin="${pagination.startPage}" 
                         end="${pagination.endPage}" step="1">
 
                         <c:choose>
@@ -138,7 +138,7 @@
                 <select name="key" id="search-key">
                     <option value="t">제목</option>
                     <option value="c">내용</option>
-                    <option value="tc">제목+내용</option>
+                    <option value="tc">제목+내용</tion>
                     <option value="w">작성자</option>
                 </select>
 
